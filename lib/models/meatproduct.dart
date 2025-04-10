@@ -32,7 +32,7 @@ class Meatproduct {
     return Meatproduct(
       json['employeeId'],
       json['name'],
-      json['validity'],
+      DateTime.parse(json['validity']),
       json['butcherShopId'],
       json['butcherShop'],
       json['id'],

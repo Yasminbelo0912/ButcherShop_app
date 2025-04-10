@@ -6,10 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserService {
   List<User> _users = [];
 
-  Future<void> saveData() async {
-    final prefs = await SharedPreferences.getInstance();
-    final usersListJson = _users.map((user) => user.toJson()).toList();
-    prefs.setString('users', jsonEncode(usersListJson));
+  Future<void> init() async {
+    await loadData();
   }
 
   Future<void> loadData() async {
@@ -22,7 +20,13 @@ class UserService {
     }
   }
 
-  void toAdd(User user) {
+  Future<void> saveData() async {
+    final prefs = await SharedPreferences.getInstance();
+    final usersListJson = _users.map((user) => user.toJson()).toList();
+    prefs.setString('users', jsonEncode(usersListJson));
+  }
+
+  void addUser(User user) {
     _users.add(user);
     saveData();
   }
