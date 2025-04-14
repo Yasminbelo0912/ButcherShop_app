@@ -26,15 +26,15 @@ class MeatService {
     prefs.setString('meat_product', jsonEncode(meatsListJson));
   }
 
-  void addMeat(Meatproduct meat) {
+  Future<void> addMeat(Meatproduct meat) async {
     _meats.add(meat);
-    saveMeats();
+    await saveMeats();
   }
 
-  void removeMeat(String id) {
+  Future<void> removeMeat(String id) async {
     _meats.removeWhere((meat) => meat.id == id);
 
-    saveMeats();
+    await saveMeats();
   }
 
   Future<void> updateMeat(Meatproduct meat) async {

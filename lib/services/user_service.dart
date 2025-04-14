@@ -10,6 +10,14 @@ class UserService {
     await loadData();
   }
 
+  User? getUserByEmail(String email) {
+    try {
+      return _users.firstWhere((user) => user.email == email);
+    } catch (_) {
+      return null;
+    }
+  }
+
   Future<void> loadData() async {
     final prefs = await SharedPreferences.getInstance();
     final String? jsonString = prefs.getString('users');
