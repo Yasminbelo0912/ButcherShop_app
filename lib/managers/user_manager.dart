@@ -3,7 +3,7 @@ import 'package:acougue_app/services/user_service.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserMenager extends ChangeNotifier {
+class UserManager extends ChangeNotifier {
   UserService userService = UserService();
   User? _currentUser;
   User? get currentUser => _currentUser;

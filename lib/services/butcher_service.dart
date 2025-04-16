@@ -27,16 +27,16 @@ class ButcherService {
     prefs.setString('butcher', jsonEncode(butcherListJson));
   }
 
-  void addButcher(Butcher butcher) {
+  Future<void> addButcher(Butcher butcher) async {
     _butchers.add(butcher);
 
-    saveButcher();
+    await saveButcher();
   }
 
-  void removeButcher(String id) {
+  Future<void> removeButcher(String id) async {
     _butchers.removeWhere((butcher) => butcher.id == id);
 
-    saveButcher();
+    await saveButcher();
   }
 
   Future<void> updateButcher(Butcher butcher) async {
